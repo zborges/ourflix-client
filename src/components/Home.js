@@ -8,12 +8,12 @@ function Home() {
       .then((res) => res.json())
       .then((data) => SetData(data.message));
   }, []);
-  
+
   return (
-    <div className="App">
-      <header className="Home-header">
-        <p>{!data ? "Loading..." : data}</p>{" "}
-      </header>
+    <div className="flex justify-center">
+      <p className="text-3xl text-gray-700 font-bold mb-5">
+        {!data ? "Loading..." : data}
+      </p>{" "}
     </div>
   );
 }
