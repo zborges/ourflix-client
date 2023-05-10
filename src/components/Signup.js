@@ -1,18 +1,42 @@
 import { useState } from "react";
-import { signupFields } from "../constants/formFields";
 import FormAction from "./FormAction";
 import Input from "./Input";
 
-const fields = signupFields;
+const signupFields = [
+  {
+    labelText: "Email address",
+    labelFor: "email",
+    id: "email",
+    name: "email",
+    type: "email",
+    autoComplete: "email",
+    isRequired: true,
+    placeholder: "Email address",
+  },
+  {
+    labelText: "Password",
+    labelFor: "password",
+    id: "password",
+    name: "password",
+    type: "password",
+    autoComplete: "current-password",
+    isRequired: true,
+    placeholder: "Password",
+  },
+];
 let fieldsState = {};
 
-fields.forEach((field) => (fieldsState[field.id] = ""));
+signupFields.forEach((field) => (fieldsState[field.id] = ""));
 
 function Signup() {
   const [signupState, setSignupState] = useState(fieldsState);
+  const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState(false);
 
-  const handleChange = (e) =>
+  const handleChange = (e) => {
     setSignupState({ ...signupState, [e.target.id]: e.target.value });
+    console.log(signupState);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -23,10 +47,40 @@ function Signup() {
   //handle Signup API Integration here
   const createAccount = () => {};
 
+  const successMessage = () => {
+    return (
+      <div
+        className="success"
+        style={{
+          display: submitted ? "" : "none",
+        }}
+      >
+        <h1>User {signupState.email} successfully registered!!</h1>
+      </div>
+    );
+  };
+
+  const errorMessage = () => {
+    return (
+      <div
+        className="error"
+        style={{
+          display: error ? "" : "none",
+        }}
+      >
+        <h1>Please enter all the fields</h1>
+      </div>
+    );
+  };
+
   return (
     <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
-      <div className="">
-        {fields.map((field) => (
+      <div>
+        <div className="messages">
+          {errorMessage()}
+          {successMessage()}
+        </div>
+        {signupFields.map((field) => (
           <Input
             key={field.id}
             handleChange={handleChange}
