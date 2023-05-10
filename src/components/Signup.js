@@ -1,14 +1,34 @@
 import { useState } from "react";
-import { signupFields } from "../constants/formFields";
 import FormAction from "./FormAction";
 import Input from "./Input";
 
-const fields = signupFields;
 let fieldsState = {};
 
-fields.forEach((field) => (fieldsState[field.id] = ""));
+const signupFields = [
+  {
+    labelText: "Email address",
+    labelFor: "email-address",
+    id: "email-address",
+    name: "email",
+    type: "email",
+    autoComplete: "email",
+    isRequired: true,
+    placeholder: "Email address",
+  },
+  {
+    labelText: "Password",
+    labelFor: "password",
+    id: "password",
+    name: "password",
+    type: "password",
+    autoComplete: "current-password",
+    isRequired: true,
+    placeholder: "Password",
+  },
+];
 
 function Signup() {
+  signupFields.forEach((field) => (fieldsState[field.id] = ""));
   const [signupState, setSignupState] = useState(fieldsState);
 
   const handleChange = (e) =>
@@ -26,7 +46,7 @@ function Signup() {
   return (
     <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
       <div className="">
-        {fields.map((field) => (
+        {signupFields.map((field) => (
           <Input
             key={field.id}
             handleChange={handleChange}
