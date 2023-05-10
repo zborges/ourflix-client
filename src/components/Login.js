@@ -1,18 +1,14 @@
-import { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { userLoggedIn } from "../actions/authActions";
+import { useState } from "react";
+
 import { useSignIn } from "react-auth-kit";
 import FormAction from "./FormAction";
 import FormExtra from "./FormExtra";
 import Input from "./Input";
 
 function Login() {
-  const signIn = useSignIn();
-  const state = useSelector((state) => state);
-  const dispatch = useDispatch();
-
-  let fieldsState = {};
   const [loginState, setLoginState] = useState(fieldsState);
+  const signIn = useSignIn();
+  let fieldsState = {};
 
   const loginFields = [
     {
@@ -41,6 +37,8 @@ function Login() {
 
   const handleChange = (e) => {
     setLoginState({ ...loginState, [e.target.id]: e.target.value });
+    const obj = JSON.stringify(loginState, null, 2);
+    console.log(obj);
   };
 
   const handleSubmit = (e) => {
@@ -55,7 +53,7 @@ function Login() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        email: loginState.email.toLowerCase(),
+        email: loginState.email,
         password: loginState.password,
       }),
     })
@@ -71,20 +69,15 @@ function Login() {
           tokenType: "Bearer",
           authState: { email: data.email },
         });
-        dispatch(userLoggedIn());
       })
       .catch((err) => {
         console.log("err:", err);
       });
+    console.log("authenticateUser");
   };
-
-  useEffect(() => {
-    console.log(state);
-  });
 
   return (
     <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
-      {state.loggedIn ? <p>Logged in</p> : <p>Not logged in</p>}
       <div className="-space-y-px">
         {loginFields.map((field) => (
           <Input
