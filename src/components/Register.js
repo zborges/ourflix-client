@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { registerUser } from "../redux/auth/authActions";
 import FormAction from "./FormAction";
 import Input from "./Input";
 
@@ -24,6 +26,7 @@ const signupFields = [
     placeholder: "Password",
   },
 ];
+
 let fieldsState = {};
 
 signupFields.forEach((field) => (fieldsState[field.id] = ""));
@@ -31,13 +34,17 @@ signupFields.forEach((field) => (fieldsState[field.id] = ""));
 function Signup() {
   const [signupState, setSignupState] = useState(fieldsState);
 
+  const { loading, userInfo, error, success } = useSelector(
+    (state) => state.auth
+  );
+  const dispatch = useDispatch();
+
   const handleChange = (e) =>
     setSignupState({ ...signupState, [e.target.id]: e.target.value });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(signupState);
-    createAccount();
+    dispatch(registerUser(signupState));
   };
 
   //handle Signup API Integration here

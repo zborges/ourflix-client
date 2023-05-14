@@ -1,19 +1,15 @@
 import React from "react";
-import { AuthProvider } from "react-auth-kit";
+import { Provider } from "react-redux";
+import store from "./store";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <AuthProvider
-      authType={"cookie"}
-      authName={"auth"}
-      cookieDomain={window.location.hostname}
-      cookieSecure={false}
-    >
+    <Provider store={store}>
       <App />
-    </AuthProvider>
+    </Provider>
   </React.StrictMode>
 );
 
