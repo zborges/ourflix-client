@@ -61,17 +61,15 @@ function Login() {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("data:", data);
-        console.log("email:", loginState.email);
-        console.log("password:", loginState.password);
-
         signIn({
           token: data.accessToken,
           expiresIn: 60 * 60 * 24 * 1000,
           tokenType: "Bearer",
           authState: { email: data.email },
         });
-        dispatch(userLoggedIn());
+        if (data.accessToken) {
+          dispatch(userLoggedIn());
+        }
       })
       .catch((err) => {
         console.log("err:", err);
@@ -101,8 +99,6 @@ function Login() {
           />
         ))}
       </div>
-
-      <FormExtra />
       <FormAction handleSubmit={handleSubmit} text="Login" />
     </form>
   );

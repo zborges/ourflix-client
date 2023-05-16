@@ -3,7 +3,8 @@ import { AuthProvider } from "react-auth-kit";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import { Provider } from "react-redux";
-import store from "./store";
+import { persistor, store } from "./store";
+import { PersistGate } from "redux-persist/integration/react";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -15,7 +16,9 @@ root.render(
         cookieDomain={window.location.hostname}
         cookieSecure={false}
       >
-        <App />
+        <PersistGate loading={null} persistor={persistor}>
+          <App />
+        </PersistGate>
       </AuthProvider>
     </Provider>
   </React.StrictMode>
