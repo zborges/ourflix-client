@@ -25,6 +25,16 @@ const signupFields = [
     isRequired: true,
     placeholder: "Password",
   },
+  {
+    labelText: "Confirm Password",
+    labelFor: "confirmPassword",
+    id: "confirmPassword",
+    name: "confirmPassword",
+    type: "confirmPassword",
+    autoComplete: "current-password",
+    isRequired: true,
+    placeholder: "Password",
+  },
 ];
 
 let fieldsState = {};
