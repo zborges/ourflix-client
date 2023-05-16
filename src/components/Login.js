@@ -6,9 +6,9 @@ import FormExtra from "./FormExtra";
 import Input from "./Input";
 
 function Login() {
+  const [loginState, setLoginState] = useState(fieldsState);
   const signIn = useSignIn();
   let fieldsState = {};
-  const [loginState, setLoginState] = useState(fieldsState);
 
   const loginFields = [
     {
