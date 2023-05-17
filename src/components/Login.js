@@ -1,18 +1,16 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { userLoggedIn } from "../actions/authActions";
 import { useSignIn } from "react-auth-kit";
+import { userLoggedIn } from "../actions/authActions";
 import FormAction from "./FormAction";
-import FormExtra from "./FormExtra";
 import Input from "./Input";
 
 function Login() {
-  const signIn = useSignIn();
-  const state = useSelector((state) => state);
-  const dispatch = useDispatch();
-
   let fieldsState = {};
   const [loginState, setLoginState] = useState(fieldsState);
+  const signIn = useSignIn();
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state);
 
   const loginFields = [
     {
@@ -41,6 +39,8 @@ function Login() {
 
   const handleChange = (e) => {
     setLoginState({ ...loginState, [e.target.id]: e.target.value });
+    const obj = JSON.stringify(loginState, null, 2);
+    console.log(obj);
   };
 
   const handleSubmit = (e) => {
@@ -74,11 +74,8 @@ function Login() {
       .catch((err) => {
         console.log("err:", err);
       });
+    console.log("authenticateUser");
   };
-
-  useEffect(() => {
-    console.log(state);
-  });
 
   return (
     <form className="mt-8 space-y-6" onSubmit={handleSubmit}>

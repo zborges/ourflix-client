@@ -2,11 +2,13 @@ import { useState } from "react";
 import FormAction from "./FormAction";
 import Input from "./Input";
 
+let fieldsState = {};
+
 const signupFields = [
   {
     labelText: "Email address",
-    labelFor: "email",
-    id: "email",
+    labelFor: "email-address",
+    id: "email-address",
     name: "email",
     type: "email",
     autoComplete: "email",
@@ -24,19 +26,13 @@ const signupFields = [
     placeholder: "Password",
   },
 ];
-let fieldsState = {};
-
-signupFields.forEach((field) => (fieldsState[field.id] = ""));
 
 function Signup() {
+  signupFields.forEach((field) => (fieldsState[field.id] = ""));
   const [signupState, setSignupState] = useState(fieldsState);
-  const [submitted, setSubmitted] = useState(false);
-  const [error, setError] = useState(false);
 
-  const handleChange = (e) => {
+  const handleChange = (e) =>
     setSignupState({ ...signupState, [e.target.id]: e.target.value });
-    console.log(signupState);
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -47,39 +43,9 @@ function Signup() {
   //handle Signup API Integration here
   const createAccount = () => {};
 
-  const successMessage = () => {
-    return (
-      <div
-        className="success"
-        style={{
-          display: submitted ? "" : "none",
-        }}
-      >
-        <h1>User {signupState.email} successfully registered!!</h1>
-      </div>
-    );
-  };
-
-  const errorMessage = () => {
-    return (
-      <div
-        className="error"
-        style={{
-          display: error ? "" : "none",
-        }}
-      >
-        <h1>Please enter all the fields</h1>
-      </div>
-    );
-  };
-
   return (
     <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
-      <div>
-        <div className="messages">
-          {errorMessage()}
-          {successMessage()}
-        </div>
+      <div className="">
         {signupFields.map((field) => (
           <Input
             key={field.id}
