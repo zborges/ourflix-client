@@ -1,5 +1,6 @@
 import Header from "../components/Header";
 import Login from "../components/Login";
+import Logout from "../components/Logout";
 
 function LoginPage() {
   return (
@@ -12,6 +13,7 @@ function LoginPage() {
         linkUrl="/signup"
       />
       <Login />
+      <Logout />
     </>
   );
 }

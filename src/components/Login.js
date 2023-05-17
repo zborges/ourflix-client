@@ -1,14 +1,16 @@
-import { useState } from "react";
-
+import { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { useSignIn } from "react-auth-kit";
+import { userLoggedIn } from "../actions/authActions";
 import FormAction from "./FormAction";
-import FormExtra from "./FormExtra";
 import Input from "./Input";
 
 function Login() {
+  let fieldsState = {};
   const [loginState, setLoginState] = useState(fieldsState);
   const signIn = useSignIn();
-  let fieldsState = {};
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state);
 
   const loginFields = [
     {
@@ -53,22 +55,21 @@ function Login() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        email: loginState.email,
+        email: loginState.email.toLowerCase(),
         password: loginState.password,
       }),
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("data:", data);
-        console.log("email:", loginState.email);
-        console.log("password:", loginState.password);
-
         signIn({
           token: data.accessToken,
           expiresIn: 60 * 60 * 24 * 1000,
           tokenType: "Bearer",
           authState: { email: data.email },
         });
+        if (data.accessToken) {
+          dispatch(userLoggedIn());
+        }
       })
       .catch((err) => {
         console.log("err:", err);
@@ -78,6 +79,7 @@ function Login() {
 
   return (
     <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
+      {state.loggedIn ? <p>Logged in</p> : <p>Not logged in</p>}
       <div className="-space-y-px">
         {loginFields.map((field) => (
           <Input
@@ -94,8 +96,6 @@ function Login() {
           />
         ))}
       </div>
-
-      <FormExtra />
       <FormAction handleSubmit={handleSubmit} text="Login" />
     </form>
   );
