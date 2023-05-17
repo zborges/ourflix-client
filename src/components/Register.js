@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import FormAction from "./FormAction";
 import Input from "./Input";
 
@@ -6,9 +7,29 @@ let fieldsState = {};
 
 const signupFields = [
   {
+    labelText: "First name",
+    labelFor: "first-name",
+    id: "firstName",
+    name: "firstName",
+    type: "firstName",
+    autoComplete: "firstName",
+    isRequired: true,
+    placeholder: "First name",
+  },
+  {
+    labelText: "Last name",
+    labelFor: "last-name",
+    id: "lastName",
+    name: "lastName",
+    type: "lastName",
+    autoComplete: "lastName",
+    isRequired: true,
+    placeholder: "Last name",
+  },
+  {
     labelText: "Email address",
-    labelFor: "email-address",
-    id: "email-address",
+    labelFor: "email",
+    id: "email",
     name: "email",
     type: "email",
     autoComplete: "email",
@@ -27,7 +48,8 @@ const signupFields = [
   },
 ];
 
-function Signup() {
+function Register() {
+  const navigate = useNavigate();
   signupFields.forEach((field) => (fieldsState[field.id] = ""));
   const [signupState, setSignupState] = useState(fieldsState);
 
@@ -40,8 +62,36 @@ function Signup() {
     createAccount();
   };
 
+  useEffect(() => {
+    console.log(signupState);
+  });
+
   //handle Signup API Integration here
-  const createAccount = () => {};
+  const createAccount = () => {
+    fetch("/users/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        firstName: signupState.firstName.toLowerCase(),
+        lastName: signupState.lastName.toLowerCase(),
+        email: signupState.email.toLowerCase(),
+        password: signupState.password,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.user) {
+          alert("Thank you for signing up! Please login to continue.");
+          navigate("/", { replace: true });
+        }
+      })
+      .catch((err) => {
+        console.log("err:", err);
+        alert("Something went wrong. Please try again.");
+      });
+  };
 
   return (
     <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
@@ -66,4 +116,4 @@ function Signup() {
   );
 }
 
-export default Signup;
+export default Register;

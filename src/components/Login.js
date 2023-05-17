@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useSignIn } from "react-auth-kit";
 import { userLoggedIn } from "../actions/authActions";
@@ -11,6 +12,7 @@ function Login() {
   const signIn = useSignIn();
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
+  const navigate = useNavigate();
 
   const loginFields = [
     {
@@ -46,6 +48,7 @@ function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
     authenticateUser();
+    navigate("/profile", { replace: true });
   };
 
   const authenticateUser = () => {
@@ -96,7 +99,7 @@ function Login() {
           />
         ))}
       </div>
-      <FormAction type={"loginButton"} handleSubmit={handleSubmit} text="Login" />
+      <FormAction handleSubmit={handleSubmit} text="Login" />
     </form>
   );
 }

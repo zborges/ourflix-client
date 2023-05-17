@@ -1,7 +1,7 @@
 import Header from "../components/Header";
-import Signup from "../components/Signup";
+import Register from "../components/Register";
 
-function SignupPage() {
+function RegisterPage() {
   return (
     <>
       <Header
@@ -10,8 +10,8 @@ function SignupPage() {
         linkName="Login"
         linkUrl="/"
       />
-      <Signup />
+      <Register />
     </>
   );
 }
- export default SignupPage;
+export default RegisterPage;
