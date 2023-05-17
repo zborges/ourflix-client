@@ -96,7 +96,7 @@ function Login() {
           />
         ))}
       </div>
-      <FormAction handleSubmit={handleSubmit} text="Login" />
+      <FormAction type={"loginButton"} handleSubmit={handleSubmit} text="Login" />
     </form>
   );
 }
