@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import SignupPage from "./pages/SignupPage";
+import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage";
 import Profile from "./components/Profile";
 import Navbar from "./components/Navbar";
@@ -17,10 +17,11 @@ function App() {
           <Navbar />
           <Routes>
             <Route path="/" element={<LoginPage />} />
-            <Route path="/signup" element={<SignupPage />} />
-            <Route path="/profile" element={
-              state.loggedIn ? <Profile /> : <LoginPage />
-            } />
+            <Route path="/signup" element={<RegisterPage />} />
+            <Route
+              path="/profile"
+              element={state.loggedIn ? <Profile /> : <LoginPage />}
+            />
           </Routes>
         </BrowserRouter>
       </div>
