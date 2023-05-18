@@ -37,12 +37,14 @@ function Login() {
     },
   ];
 
+  useEffect(() => {
+    console.log(state);
+  })
+
   loginFields.forEach((field) => (fieldsState[field.id] = ""));
 
   const handleChange = (e) => {
     setLoginState({ ...loginState, [e.target.id]: e.target.value });
-    const obj = JSON.stringify(loginState, null, 2);
-    console.log(obj);
   };
 
   const handleSubmit = (e) => {
@@ -66,18 +68,17 @@ function Login() {
       .then((data) => {
         signIn({
           token: data.accessToken,
-          expiresIn: 60 * 60 * 24 * 1000,
+          expiresIn: 60 * 60 * 24 * 3,
           tokenType: "Bearer",
           authState: { email: data.email },
         });
         if (data.accessToken) {
-          dispatch(userLoggedIn());
+          dispatch(userLoggedIn(data.user));
         }
       })
       .catch((err) => {
         console.log("err:", err);
       });
-    console.log("authenticateUser");
   };
 
   return (

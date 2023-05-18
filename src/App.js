@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage";
-import Profile from "./components/Profile";
+import ProfilePage from "./pages/ProfilePage";
 import Navbar from "./components/Navbar";
 import "./App.css";
 
@@ -20,7 +20,7 @@ function App() {
             <Route path="/signup" element={<RegisterPage />} />
             <Route
               path="/profile"
-              element={state.loggedIn ? <Profile /> : <LoginPage />}
+              element={state.loggedIn ? <ProfilePage /> : <LoginPage />}
             />
           </Routes>
         </BrowserRouter>
