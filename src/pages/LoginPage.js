@@ -1,9 +1,9 @@
-import Header from "../components/Header";
-import Login from "../components/Login";
+import Header from "../components/content/AuthHeader";
+import Login from "../components/content/Login";
 
 function LoginPage() {
   return (
-    <>
+    <div className="flex items-center flex-col">
       {" "}
       <Header
         heading="Login to your account"
@@ -12,7 +12,7 @@ function LoginPage() {
         linkUrl="/signup"
       />
       <Login />
-    </>
+    </div>
   );
 }
 

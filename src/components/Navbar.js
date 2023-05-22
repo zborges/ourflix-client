@@ -1,9 +1,11 @@
-import Logout from "./Logout";
+import LogoutButton from "./buttons/navigation/LogoutButton";
+import MoviesPageButton from "./buttons/navigation/MoviesPageButton";
 
 function Navbar() {
   return (
-    <div className="text-center mt-20">
-      <Logout />
+    <div className="flex align-top w-2/5">
+      <LogoutButton />
+      <MoviesPageButton />
     </div>
   );
 }

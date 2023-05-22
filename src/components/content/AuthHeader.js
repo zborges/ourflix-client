@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 function Header({ heading, paragraph, linkName, linkUrl = "#" }) {
   return (
-    <div className="mb-10">
+    <div className="w-2/5">
       <div className="flex justify-center">
         <img
           alt=""
