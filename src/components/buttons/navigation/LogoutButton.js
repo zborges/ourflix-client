@@ -1,10 +1,10 @@
-import FormAction from "./FormAction";
+import FormAction from "../FormActionButton";
 import { useDispatch } from "react-redux";
-import { userLoggedOut } from "../actions/authActions";
+import { userLoggedOut } from "../../../actions/authActions";
 import { useSignOut } from "react-auth-kit";
 import { useNavigate } from "react-router-dom";
 
-function Logout() {
+function LogoutButton() {
   const dispatch = useDispatch();
   const signOut = useSignOut();
   const navigate = useNavigate();
@@ -16,10 +16,10 @@ function Logout() {
   };
 
   return (
-    <form className="space-y-2" onSubmit={handleSubmit}>
+    <form className="" onSubmit={handleSubmit}>
       <FormAction handleSubmit={handleSubmit} text="Logout" />
     </form>
   );
 }
 
-export default Logout;
+export default LogoutButton;

@@ -1,5 +1,5 @@
-import Header from "../components/Header";
-import Register from "../components/Register";
+import Header from "../components/content/AuthHeader";
+import Register from "../components/content/Register";
 
 function RegisterPage() {
   return (

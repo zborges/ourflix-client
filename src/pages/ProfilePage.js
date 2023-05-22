@@ -1,5 +1,4 @@
-import { useEffect } from "react";
-import Profile from "../components/Profile";
+import Profile from "../components/content/Profile";
 
 function ProfilePage() {
   return <Profile />;

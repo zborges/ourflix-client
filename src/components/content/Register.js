@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import FormAction from "./FormAction";
-import Input from "./Input";
+import FormAction from "../buttons/FormActionButton";
+import Input from "../forms/InputForm";
 
 let fieldsState = {};
 
