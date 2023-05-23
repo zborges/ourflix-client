@@ -3,16 +3,23 @@ import { useSelector } from "react-redux";
 
 function Profile() {
   const state = useSelector((state) => state);
-  useEffect(() => {
-    console.log(state);
-  });
+
+  const movies = state.user.movies;
+
   return (
-    <div className="bg-orange-400 h-full">
+    <div className="bg-orange-400">
       <h1 style={{ textAlign: "center" }}>Welcome {state.user.firstName}</h1>
       <h3>Your movies are:</h3>
-      <div>
-        <ul>{state.user.movies.map((movie) => movie.title)}</ul>
-      </div>
+      {movies.map((movie) => (
+        <div className="max-w-sm rounded overflow-hidden shadow-lg">
+          <div className="px-6 py-4">
+            <div className="font-bold text-xl mb-2">
+              <p>{movie.title}</p>
+            </div>
+            <p className="text-gray-700 text-base">{movie.description}</p>
+          </div>
+        </div>
+      ))}
     </div>
   );
 }
