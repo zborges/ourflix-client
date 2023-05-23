@@ -1,5 +1,5 @@
-import LogoutButton from "./buttons/navigation/LogoutButton";
-import MoviesPageButton from "./buttons/navigation/MoviesPageButton";
+import LogoutButton from "../buttons/navigation/LogoutButton";
+import MoviesPageButton from "../buttons/navigation/MoviesPageButton";
 
 function Navbar() {
   return (

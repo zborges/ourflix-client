@@ -1,8 +1,12 @@
-import { USER_LOGGED_IN, USER_LOGGED_OUT } from "../actionTypes/actionTypes";
+import {
+  USER_LOGGED_IN,
+  USER_LOGGED_OUT,
+  UPDATE_USER,
+} from "../actionTypes/actionTypes";
 const userLoggedIn = (user) => {
   return {
     type: USER_LOGGED_IN,
-    user: user
+    user: user,
   };
 };
 
@@ -12,4 +16,11 @@ const userLoggedOut = () => {
   };
 };
 
-export { userLoggedIn, userLoggedOut };
+const updateUser = (user) => {
+  return {
+    type: UPDATE_USER,
+    user: user,
+  };
+};
+
+export { userLoggedIn, userLoggedOut, updateUser };
