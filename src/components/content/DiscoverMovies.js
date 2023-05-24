@@ -10,9 +10,7 @@ function Movies() {
         return response.json();
       })
       .then((data) => {
-        console.log("data:", data);
         setMovies(data.results);
-        console.log("movies:", movies);
       })
 
       .catch((err) => {
@@ -25,16 +23,18 @@ function Movies() {
   }, []);
 
   return (
-    <div className="h-full overflow-auto">
+    <div className="overflow-auto">
       <h3>Select some movies!</h3>
       {movies ? (
-        <div className="flex flex-col">
+        <div className="flex flex-col max-w-sm rounded overflow-hidden shadow-lg bg-slate-200">
           {movies.map((movie) => {
             return (
               <div className="py-5">
-                <img src={`${IMG_URL}/${movie.poster_path}`} alt={`${movie.title}`} />
-                <h2 className="text-xl">{movie.title}</h2>
-                <p className="text-sm">{movie.overview}</p>
+                <img
+                  src={`${IMG_URL}/${movie.poster_path}`}
+                  alt={`${movie.title}`}
+                />
+                <h2 className="text-l">{movie.title}</h2>
               </div>
             );
           })}

@@ -1,4 +1,4 @@
-import Movies from "../components/content/Movies";
+import Movies from "../components/content/DiscoverMovies";
 
 function MoviesPage() {
   return <Movies />;
