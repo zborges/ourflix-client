@@ -12,7 +12,7 @@ This project was created to utilize my React skills to show to employers my abil
 <b>Built with</b>
 
 - [React](https://reactjs.org/)
-- [Express]((https://expressjs.com/)
+- [Express](https://expressjs.com/)
 - [Tailwind](https://tailwindcss.com/)
 
 ## Installation
