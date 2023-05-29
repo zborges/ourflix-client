@@ -1,6 +1,6 @@
 ## Ourflix Client side
 
-This is a MERN (React/Express/MongoDB/Node) project that allows users to create an account, see a list of movies and add them to their account. 
+This is a MERN (MongoDB/Express/React/Node) project that allows users to create an account, see a list of movies and add them to their account. 
 
 ## Motivation
 
