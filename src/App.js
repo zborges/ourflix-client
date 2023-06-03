@@ -12,10 +12,10 @@ function App() {
   const state = useSelector((state) => state);
 
   return (
-    <div className=" flex items-center py-12 px-4 sm:px-6 lg:px-8">
+    <div className=" flex flex-col items-center px-4 sm:px-6 lg:px-8 bg-fuchsia-500">
       <BrowserRouter>
         <Navbar />
-        <div className="w-full space-y-8">
+        <div className="w-full space-y-8 ">
           <Routes>
             <Route path="/" element={<LoginPage />} />
             <Route path="/signup" element={<RegisterPage />} />

@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 
 function MovieModal(props) {
+  const IMG_URL = "https://image.tmdb.org/t/p/w200/";
+
   useEffect(() => {
     console.log("props from child:", props);
   });
@@ -26,7 +28,7 @@ function MovieModal(props) {
               <div className="space-y-3">
                 <img
                   className="object-contain h-64 w-full"
-                  src={`${props.IMG_URL}/${props.selectedMovie.poster_path}`}
+                  src={`${IMG_URL}/${props.selectedMovie.poster_path}`}
                   alt={`${props.selectedMovie.title}`}
                 />
               </div>
@@ -36,6 +38,13 @@ function MovieModal(props) {
                 </p>
               </div>
               <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
+                <button
+                  className="text-blue-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                  type="button"
+                  onClick={() => props.addMovieToUser(props.selectedMovie)}
+                >
+                  Add to List
+                </button>
                 <button
                   className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                   type="button"

@@ -3,8 +3,7 @@ import Login from "../components/content/Login";
 
 function LoginPage() {
   return (
-    <div className="flex items-center flex-col">
-      {" "}
+    <div className="flex items-center flex-col bg-red-400">
       <Header
         heading="Login to your account"
         paragraph="Don't have an account yet? "
