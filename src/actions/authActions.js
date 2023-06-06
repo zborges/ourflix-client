@@ -17,6 +17,7 @@ const userLoggedOut = () => {
 };
 
 const updateUser = (user) => {
+  console.log("UpdateUser; User:", user);
   return {
     type: UPDATE_USER,
     user: user,

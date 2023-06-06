@@ -3,9 +3,6 @@ import React, { useEffect } from "react";
 function MovieModal(props) {
   const IMG_URL = "https://image.tmdb.org/t/p/w200/";
 
-  useEffect(() => {
-    console.log("props from child:", props);
-  });
   return (
     <>
       {props.isShow ? (

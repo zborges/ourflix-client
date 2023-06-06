@@ -75,6 +75,7 @@ function Login() {
           authState: { email: data.email },
         });
         if (data.accessToken) {
+          console.log("data:", data);
           dispatch(userLoggedIn(data.user));
         }
       })
