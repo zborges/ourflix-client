@@ -1,16 +1,25 @@
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import MovieModal from "./MovieModal";
+import { getUser } from "../../actions/userActions";
 
 function Profile() {
   const state = useSelector((state) => state);
+  const movies = state.userData.userData.movies;
+  const dispatch = useDispatch();
 
-  const movies = state.user.movies;
+  useEffect(() => {
+    console.log(state)
+  })
+  useEffect(() => {
+    console.log("IS this useeffecting")
+    dispatch(getUser(state.auth.user._id));
+  }, []);
 
   return (
     <div className="bg-orange-400">
       <MovieModal />
-      <h1 style={{ textAlign: "center" }}>Welcome {state.user.firstName}</h1>
+      <h1 style={{ textAlign: "center" }}>Welcome {state.auth.user.firstName}</h1>
       <h3>Your movies are:</h3>
       {movies.map((movie) => (
         <div className="max-w-sm rounded overflow-hidden shadow-lg">

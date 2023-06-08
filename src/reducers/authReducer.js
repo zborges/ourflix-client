@@ -1,7 +1,6 @@
 import {
   USER_LOGGED_IN,
   USER_LOGGED_OUT,
-  UPDATE_USER,
 } from "../actionTypes/actionTypes";
 
 const initialState = {
@@ -22,12 +21,6 @@ function authReducer(state = initialState, action) {
         ...state,
         user: {},
         loggedIn: false,
-      };
-
-    case UPDATE_USER:
-      return {
-        ...state,
-        user: action.user,
       };
 
     default:

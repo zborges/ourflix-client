@@ -12,7 +12,7 @@ function App() {
   const state = useSelector((state) => state);
 
   return (
-    <div className=" flex flex-col items-center px-4 sm:px-6 lg:px-8 bg-fuchsia-500">
+    <div className="flex flex-col items-center  bg-fuchsia-500">
       <BrowserRouter>
         <Navbar />
         <div className="w-full space-y-8 ">
@@ -21,11 +21,11 @@ function App() {
             <Route path="/signup" element={<RegisterPage />} />
             <Route
               path="/profile"
-              element={state.loggedIn ? <ProfilePage /> : <LoginPage />}
+              element={state.auth.loggedIn ? <ProfilePage /> : <LoginPage />}
             />
             <Route
               path="/movies"
-              element={state.loggedIn ? <MoviesPage /> : <LoginPage />}
+              element={state.auth.loggedIn ? <MoviesPage /> : <LoginPage />}
             />
           </Routes>
         </div>

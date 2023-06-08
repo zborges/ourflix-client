@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 function MovieModal(props) {
   const IMG_URL = "https://image.tmdb.org/t/p/w200/";

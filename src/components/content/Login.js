@@ -43,6 +43,10 @@ function Login() {
     }
   });
 
+  useEffect(() => {
+    console.log("state:", state);
+  }, []);
+
   loginFields.forEach((field) => (fieldsState[field.id] = ""));
 
   const handleChange = (e) => {
@@ -89,7 +93,6 @@ function Login() {
       className="bg-slate-400 sm:w-full md:w-2/5 lg:w-1/2 h-full "
       onSubmit={handleSubmit}
     >
-      {state.loggedIn ? <p>Logged in</p> : <p>Not logged in</p>}
       <div className="">
         {loginFields.map((field) => (
           <Input
