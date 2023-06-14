@@ -83,12 +83,15 @@ function Movies() {
       />
       <h3>Select some movies!</h3>
       {movies ? (
-        <div className="flex flex-row flex-wrap max-w-full justify-center rounded overflow-hidden shadow-lg bg-teal-500 space-x-4 space-y-3 truncate break-all">
+        <div className="flex flex-row flex-wrap max-w-full justify-center rounded overflow-hidden shadow-lg bg-teal-500 space-x-4 space-y-3">
           {movies.map((movie) => {
             return (
               // eslint-disable-next-line jsx-a11y/anchor-is-valid
-              <a className="cursor-pointer" onClick={() => handleClick(movie)}>
-                <div className="bg-white flex-wrap shadow-sm rounded-md py-2 flex justify-center flex-col text-center items-center ">
+              <a
+                className="cursor-pointer h-full"
+                onClick={() => handleClick(movie)}
+              >
+                <div className="bg-white shadow-sm rounded-md py-2 flex justify-center flex-col text-center items-center break-normal ">
                   <img
                     className="object-cover h-full w-3/4 rounded-md"
                     src={`${IMG_URL}/${movie.poster_path}`}
