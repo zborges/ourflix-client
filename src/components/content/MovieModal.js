@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 function MovieModal(props) {
   const IMG_URL = "https://image.tmdb.org/t/p/w200/";
@@ -35,6 +35,9 @@ function MovieModal(props) {
                 </p>
               </div>
               <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
+                {props.status ? (
+                  <div className="flex items-start mb-1 ">{props.status}</div>
+                ) : null}
                 <button
                   className="text-blue-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                   type="button"

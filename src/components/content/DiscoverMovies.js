@@ -7,6 +7,7 @@ const IMG_URL = "https://image.tmdb.org/t/p/w200/";
 function Movies() {
   const [movies, setMovies] = useState(null);
   const [isShow, invokeModal] = useState(false);
+  const [status, setStatus] = useState(null);
   const [selectedMovie, setSelectedMovie] = useState("");
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
@@ -60,6 +61,7 @@ function Movies() {
     })
       .then((response) => response.json())
       .then((data) => {
+        setStatus(data.message);
         console.log("data:", data);
       })
       .catch((err) => {
@@ -68,7 +70,7 @@ function Movies() {
   };
 
   const handleClick = (movie) => {
-    console.log("click");
+    setStatus(null);
     setSelectedMovie(movie);
     initModal();
   };
@@ -80,8 +82,8 @@ function Movies() {
         isShow={isShow}
         selectedMovie={selectedMovie}
         addMovieToUser={addMovieToUser}
+        status={status}
       />
-      <h3>Select some movies!</h3>
       {movies ? (
         <div className="flex flex-row flex-wrap max-w-full justify-center rounded overflow-hidden shadow-lg bg-teal-500 space-x-4 space-y-3">
           {movies.map((movie) => {
@@ -91,13 +93,13 @@ function Movies() {
                 className="cursor-pointer h-full"
                 onClick={() => handleClick(movie)}
               >
-                <div className="bg-white shadow-sm rounded-md py-2 flex justify-center flex-col text-center items-center break-normal ">
+                <div className="bg-white shadow-sm rounded-md py-2 flex justify-center flex-col text-center items-center break-normal w-40">
                   <img
                     className="object-cover h-full w-3/4 rounded-md"
                     src={`${IMG_URL}/${movie.poster_path}`}
                     alt={`${movie.title}`}
                   />
-                  <p className="text-sm py-1">{movie.title}</p>
+                  <p className="text-sm py-1 text-ellipsis">{movie.title}</p>
                 </div>
               </a>
             );
