@@ -12,7 +12,7 @@ function App() {
   const state = useSelector((state) => state);
 
   return (
-    <div className="flex flex-col items-center  bg-fuchsia-500">
+    <div className="flex flex-col items-end">
       <BrowserRouter>
         <Navbar />
         <div className="w-full space-y-8 ">
