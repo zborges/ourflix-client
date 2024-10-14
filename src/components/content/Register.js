@@ -94,7 +94,10 @@ function Register() {
   };
 
   return (
-    <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
+    <form
+      className="bg-slate-400 sm:w-full md:w-2/5 lg:w-1/2 h-full "
+      onSubmit={handleSubmit}
+    >
       <div className="">
         {signupFields.map((field) => (
           <Input

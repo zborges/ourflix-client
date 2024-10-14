@@ -10,7 +10,6 @@ function Movies() {
   const [status, setStatus] = useState(null);
   const [selectedMovie, setSelectedMovie] = useState("");
   const state = useSelector((state) => state);
-  const dispatch = useDispatch();
 
   const initModal = () => {
     console.log("initModal");

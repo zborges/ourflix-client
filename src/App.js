@@ -15,7 +15,7 @@ function App() {
     <div className="flex flex-col items-end">
       <BrowserRouter>
         <Navbar />
-        <div className="w-full space-y-8 ">
+        <div className="w-full h-full space-y-8 ">
           <Routes>
             <Route path="/" element={<LoginPage />} />
             <Route path="/signup" element={<RegisterPage />} />
